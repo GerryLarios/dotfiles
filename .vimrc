@@ -1,7 +1,18 @@
-set encoding=utf-8
-set number
-set noshowmode
-set laststatus=2
+" Basics
+set encoding=utf-8 " The encoding displayed.
+set fileencoding=utf-8 " The encoding written to file
+set noshowmode " Does not show [MODE]; task delegates to lightline
+set laststatus=2 " Always show the status line from the last window
+syntax on " Syntax highlight from vim
+set number " Precede each line with its number
+set wildmenu "On pressing 'wildchar' (usually <Tab>) to invoke completion on command-line
+set wildmode=list:full " List all matches and complete first match
+set title " Show if a file is being edited
+
+" Indentation
+set expandtab
+set shiftwidth=2
+set softtabstop=2
 
 " Remove newbie crutches in Normal Mode
 nnoremap <Down> <Nop>
@@ -44,12 +55,18 @@ Plugin 'wakatime/vim-wakatime'
 Plugin 'christoomey/vim-tmux-navigator'
 " NerdTREE
 Plugin 'preservim/nerdtree'
-" Onehalf theme
-Plugin 'sonph/onehalf', {'rtp': 'vim/'}
+" Onedark theme
+Plugin 'joshdick/onedark.vim'
 " Lightline
 Plugin 'itchyny/lightline.vim'
 Plugin 'itchyny/vim-gitbranch'
-
+" FZF
+Plugin 'junegunn/fzf'
+" Ruby
+Plugin 'tpope/vim-endwise' " Put end
+Plugin 'tpope/vim-commentary' " Comment lines
+Plugin 'jiangmiao/auto-pairs' " Auto pairs
+Plugin 'ycm-core/YouCompleteMe' " Auto complatation
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -62,12 +79,11 @@ autocmd vimenter * NERDTree
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" Onehalf theme
-syntax on
+" dark theme
 set t_Co=256
 set cursorline
-colorscheme onehalfdark
-let g:airline_theme='onehalfdark'
+colorscheme onedark
+let g:airline_theme='onedark'
 if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -76,7 +92,7 @@ endif
 
 " Lightline
 let g:lightline = {
-  \ 'colorscheme': 'onehalfdark',
+  \ 'colorscheme': 'onedark',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]

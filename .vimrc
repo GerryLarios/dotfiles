@@ -62,6 +62,8 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'itchyny/vim-gitbranch'
 " FZF
 Plugin 'junegunn/fzf'
+" Polygot
+Plugin 'sheerun/vim-polyglot'
 " Ruby
 Plugin 'tpope/vim-endwise' " Put end
 Plugin 'tpope/vim-commentary' " Comment lines

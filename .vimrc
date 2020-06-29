@@ -44,6 +44,7 @@ nnoremap <C-H> <C-W><C-H>
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -60,8 +61,6 @@ Plugin 'joshdick/onedark.vim'
 " Lightline
 Plugin 'itchyny/lightline.vim'
 Plugin 'itchyny/vim-gitbranch'
-" FZF
-Plugin 'junegunn/fzf'
 " Polygot
 Plugin 'sheerun/vim-polyglot'
 " Ruby
@@ -69,9 +68,18 @@ Plugin 'tpope/vim-endwise' " Put end
 Plugin 'tpope/vim-commentary' " Comment lines
 Plugin 'jiangmiao/auto-pairs' " Auto pairs
 Plugin 'ycm-core/YouCompleteMe' " Auto complatation
+Plugin 'junegunn/fzf' " File finder
+Plugin 'ctrlpvim/ctrlp.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+" Fzf ctrp
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
 
 " Tmux VIM navigator
 let g:tmux_navigator_no_mappings = 1
@@ -104,3 +112,4 @@ let g:lightline = {
   \ },
   \ }
 
+autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
